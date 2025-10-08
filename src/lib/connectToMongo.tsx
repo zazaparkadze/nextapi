@@ -14,7 +14,7 @@ export default async function connectToMongo() {
   const uri =
     "mongodb+srv://zaza:1234test@cluster0.crzqo.mongodb.net/mongoData?retryWrites=true&w=majority&appName=Cluster0";
   try {
-    await mongoose.connect(uri);
+    await mongoose.connect(uri).then(() => console.log("connected to mongoDB"));
   } catch (error) {
     console.log(error);
   }
