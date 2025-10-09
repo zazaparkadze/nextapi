@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import connectToMongo from "../lib/connectToMongo";
+/* import connectToMongo from "../lib/connectToMongo"; */
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,7 +23,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  connectToMongo();
+  /*   connectToMongo(); */
   return (
     <html lang="en">
       <body

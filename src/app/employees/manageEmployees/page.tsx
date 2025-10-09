@@ -24,7 +24,8 @@ export default function EmployeeForm() {
       })
     );
     if (newEmployee.firstname === firstname) {
-      router.push(`/feedback/created`);
+      let status = "created";
+      router.push(`/feedback/${status}`);
       setFirstname("");
       setLastname("");
     }
@@ -34,7 +35,8 @@ export default function EmployeeForm() {
     e.preventDefault();
     const response = await deleteEmployee(Number(id));
     if (JSON.parse(response).acknowledged) {
-      router.push(`/feedback/deleted`);
+      let status = "deleted";
+      router.push(`/feedback/${status}`);
       setId("");
     }
   }
