@@ -4,10 +4,12 @@ import EmployeePage from "./components/EmployeePage";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import Link from "next/link";
+import connectToMongo from "@/lib/connectToMongo";
 
 /*  export default function page() {
   const data: Promise<Employee[]> = getAllEmployeesFetch(); */
 export default async function page() {
+  connectToMongo();
   const data = JSON.parse(await getAllEmployees());
   if (!data) {
     notFound();
