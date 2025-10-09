@@ -17,7 +17,7 @@ export default async function page() {
 
   return (
     <Suspense fallback={<div>Loading...</div>}>
-      <div className="text-4xl text-center">
+      <div className="text-4xl text-center py-5 ">
         <Link href={"/employees/manageEmployees"}>Add or Delete Employee</Link>
       </div>
       <EmployeePage data={data} />
