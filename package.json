@@ -6,7 +6,8 @@
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "debug": "next build --debug"
   },
   "dependencies": {
     "mongodb": "^6.20.0",

@@ -1,11 +1,8 @@
-export default async function getAllEmployees() {
-  const res = await fetch("https://nextapi-psi.vercel.app/api/employees", {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
+"use server";
+import Employee from "../model/Employee";
 
-  if (!res.ok) return "api server error";
-  return res.json();
+export default async function getAllEmployees() {
+  const allEmployees: Employee[] = await Employee.find({});
+
+  return JSON.stringify(allEmployees);
 }
