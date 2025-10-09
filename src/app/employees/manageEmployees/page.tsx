@@ -34,7 +34,12 @@ export default function EmployeeForm() {
   async function handleDelete(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const response = await deleteEmployee(Number(id));
-    if (JSON.parse(response).acknowledged) {
+    console.log(response);
+    if (JSON.parse(response).deletedCount === 0) {
+      const status = "notFound";
+      router.push(`/feedback/${status}`);
+      setId("");
+    } else {
       const status = "deleted";
       router.push(`/feedback/${status}`);
       setId("");
