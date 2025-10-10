@@ -1,9 +1,15 @@
-import React from "react";
+import getAllPosts from "@/lib/getAllPosts";
+import PostPage from "./components/PostPage";
 
-export default function page() {
+export default async function page() {
+  const posts: Post[] = JSON.parse(await getAllPosts());
   return (
-    <div className="text-5xl text-center">
-      Posts will be fetched from mongo database directly
+    <div className="text-4xl">
+      <p>Posts are fetched from mongo database directly!</p>
+      <br />
+      {posts.map((post) => (
+        <PostPage post={post} key={post.id} />
+      ))}
     </div>
   );
 }
