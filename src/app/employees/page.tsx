@@ -1,5 +1,11 @@
 /* import getAllEmployeesFetch from "@/lib/getAllEmployeesFetch"; */
 export const dynamic = "force-dynamic";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "employees",
+  description: "employees fetched from mongoDB",
+};
 
 import getAllEmployees from "@/lib/getAllEmployees";
 import EmployeePage from "./components/EmployeePage";

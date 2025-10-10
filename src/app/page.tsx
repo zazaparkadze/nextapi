@@ -15,7 +15,7 @@ export default function Home() {
           <Link href={"/blog"}>Blog</Link>
         </p>
         <p>
-          <Link href={"/posts"}>Posts</Link>
+          <Link href={"/mongoposts"}>Posts</Link>
         </p>
       </main>
     </div>

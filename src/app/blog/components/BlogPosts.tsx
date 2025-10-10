@@ -5,7 +5,13 @@ export default function BlogPosts() {
   const sortedPostsData = getSortedPostsData();
 
   const content = sortedPostsData.map((post) => {
-    return <Posts post={post} key={post.id} />;
+    return <Posts post={post} key={post._id} />;
   });
-  return content;
+  return (
+    <div>
+      <br />
+      <h1 className="text-6xl pl-20 ">Blog</h1>
+      {content}
+    </div>
+  );
 }

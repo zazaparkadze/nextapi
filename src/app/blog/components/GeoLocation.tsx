@@ -1,37 +1,41 @@
 "use client";
 import clsx from "clsx";
 import { useState } from "react";
-
+import { format } from "date-fns";
+/* 
 type WithTimeStamp = {
   lat: string | undefined;
   lgt: string | undefined;
   timestamp: string | undefined;
 };
-
+ */
 export default function GeoLocation() {
   const [notEmpty, setNotEmpty] = useState(false);
-  const initialValue: WithTimeStamp = {
+  /* const initialValue: WithTimeStamp = {
     lat: undefined,
     lgt: undefined,
     timestamp: undefined,
-  };
+    const [latitude_longitude, setLatitude_Longitude] = useState(initialValue);
+  }; */
 
-  const [latitude_longitude, setLatitude_Longitude] = useState(initialValue);
   function getLocation() {
     function showPosition(position: GeolocationPosition) {
-      x.innerHTML =
-        "Latitude: " +
-        position.coords.latitude +
-        "<br>Longitude: " +
-        position.coords.longitude +
-        "<br> Timestamp: " +
-        new Date(position.timestamp);
-      setNotEmpty(true);
-      setLatitude_Longitude({
+      !notEmpty
+        ? (x.innerHTML =
+            "Latitude: " +
+            position.coords.latitude +
+            "<br>Longitude: " +
+            position.coords.longitude +
+            "<br> Timestamp: " +
+            format(new Date(position.timestamp), "yyyy-MM-dd\tHH:mm:ss"))
+        : null;
+
+      setNotEmpty(!notEmpty ? true : false);
+      /*   setLatitude_Longitude({
         lat: position.coords.latitude + "",
         lgt: position.coords.longitude + "",
         timestamp: new Date(position.timestamp).toString(),
-      });
+      }); */
     }
 
     const x = document.getElementById("demo") as HTMLParagraphElement;
@@ -47,25 +51,26 @@ export default function GeoLocation() {
       <div className="group">
         <button
           onClick={() => getLocation()}
-          className="text-4xl text-center hover:text-amber-500 hover::"
+          className="text-4xl text-center hover:text-amber-500"
         >
           Get Your Coordinates.
         </button>
-        <span className="relative opacity-0 group-hover:opacity-100 left-1 bottom-6 text-2xl mask-l-from-neutral-800 border-2 border-amber-500 px-4 py-2 font-semibold">
+        <span className="relative opacity-0 group-hover:opacity-100 left-1 bottom-6 text-xl bg-white text-black px-3 rounded-xl py-1 font-mono">
           click
         </span>
       </div>
       <p
+        onClick={() => getLocation()}
         id="demo"
         className={clsx({
-          "text-4xl text-blue-900  py-3 px-5 bg-gradient-to-l from-amber-600 to-amber-300 font-semibold rounded-[20px]":
+          "text-4xl text-blue-900  py-3 px-5 bg-gradient-to-l from-amber-600 to-amber-300 rounded-[20px]":
             notEmpty,
-          "": !notEmpty,
+          hidden: !notEmpty,
         })}
       ></p>
-      <p>{latitude_longitude.lat}</p>
+      {/*  <p>{latitude_longitude.lat}</p>
       <p>{latitude_longitude.lgt}</p>
-      <p>{latitude_longitude.timestamp}</p>
+      <p>{latitude_longitude.timestamp}</p> */}
     </div>
   );
 }

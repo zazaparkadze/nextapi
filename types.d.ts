@@ -4,7 +4,7 @@ type Employee = {
   lastname: string;
 };
 type BlogPost = {
-  id: string;
+  _id: string;
   date: string;
   title: string;
   body?: string;

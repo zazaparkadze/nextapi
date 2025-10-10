@@ -13,14 +13,14 @@ export default function getSortedPostsData() {
   const fileNames = fs.readdirSync(directoryName);
 
   const blogPostsData = fileNames.map((fileName) => {
-    const id = fileName.replace(/\.md$/, "");
+    const _id = fileName.replace(/\.md$/, "");
     const fullPath = path.join(directoryName, fileName);
 
     const postData = fs.readFileSync(fullPath, "utf-8");
 
     const matterResult = matter(postData);
     const blogPost = {
-      id,
+      _id,
       date: matterResult.data.date,
       title: matterResult.data.title,
       body: matterResult.content,
