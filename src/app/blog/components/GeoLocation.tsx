@@ -2,24 +2,13 @@
 import clsx from "clsx";
 import { useState } from "react";
 import { format } from "date-fns";
-/* 
-type WithTimeStamp = {
-  lat: string | undefined;
-  lgt: string | undefined;
-  timestamp: string | undefined;
-};
- */
+
 export default function GeoLocation() {
   const [notEmpty, setNotEmpty] = useState(false);
-  /* const initialValue: WithTimeStamp = {
-    lat: undefined,
-    lgt: undefined,
-    timestamp: undefined,
-    const [latitude_longitude, setLatitude_Longitude] = useState(initialValue);
-  }; */
 
   function getLocation() {
     function showPosition(position: GeolocationPosition) {
+      // eslint-disable-next-line @typescript-eslint/no-unused-expressions
       !notEmpty
         ? (x.innerHTML =
             "Latitude: " +
@@ -29,13 +18,7 @@ export default function GeoLocation() {
             "<br> Timestamp: " +
             format(new Date(position.timestamp), "yyyy-MM-dd\tHH:mm:ss"))
         : null;
-
-      setNotEmpty(!notEmpty ? true : false);
-      /*   setLatitude_Longitude({
-        lat: position.coords.latitude + "",
-        lgt: position.coords.longitude + "",
-        timestamp: new Date(position.timestamp).toString(),
-      }); */
+      setNotEmpty(!notEmpty);
     }
 
     const x = document.getElementById("demo") as HTMLParagraphElement;
@@ -68,9 +51,6 @@ export default function GeoLocation() {
           hidden: !notEmpty,
         })}
       ></p>
-      {/*  <p>{latitude_longitude.lat}</p>
-      <p>{latitude_longitude.lgt}</p>
-      <p>{latitude_longitude.timestamp}</p> */}
     </div>
   );
 }

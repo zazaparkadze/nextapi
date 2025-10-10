@@ -1,17 +1,26 @@
 import getSortedPostsData from "@/lib/getSortedPostsData";
 import { notFound } from "next/navigation";
 import ProfilePic from "../../components/ProfilePic";
+import remarkPostItem from "@/lib/remarkPostItem";
 
 type Params = {
   params: Promise<{ postId: string }>;
 };
 
+export async function generateStaticParams() {
+  const allPosts = await getSortedPostsData();
+  return allPosts.map((post) => ({ postId: post._id }));
+}
+
 export default async function IndevidualPost({ params }: Params) {
   const { postId } = await params;
   const allPosts = await getSortedPostsData();
   const postItem = allPosts.find((post) => post._id === postId);
-
   if (!postItem) notFound();
+
+  const { contentHtml, title, date } = await remarkPostItem(postId);
+  ////////// remarkPostContent - remark-html, remark-parse, to-vfile, unified
+
   return (
     <div>
       <div className="p-3 m-3 flex justify-center items-center gap-5 md:flex-col">
@@ -22,12 +31,11 @@ export default async function IndevidualPost({ params }: Params) {
         </p>
       </div>
       <div className="text-4xl p-3 m-3">
-        {/*       <p>Post Name: {postId}</p> */}
-        <p className="text-xl">{postItem.date}</p>
+        <p className="text-xl">{date}</p>
         <br />
-        <p>{postItem.title}</p>
+        <p>{title}</p>
         <br />
-        <p className="text-2xl">{postItem?.body}</p>
+        <section dangerouslySetInnerHTML={{ __html: contentHtml }}></section>
       </div>
     </div>
   );

@@ -4,6 +4,10 @@ interface FeedbackPageProps {
   params: Promise<{ status: string }>;
 }
 
+export function generateStaticParams() {
+  return [{ status: "deleted" }, { status: "completed" }];
+}
+
 export default async function FeedbackPage({ params }: FeedbackPageProps) {
   const { status } = await params;
   return (

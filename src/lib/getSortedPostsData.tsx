@@ -11,7 +11,6 @@ export default function getSortedPostsData() {
     "blogposts"
   );
   const fileNames = fs.readdirSync(directoryName);
-
   const blogPostsData = fileNames.map((fileName) => {
     const _id = fileName.replace(/\.md$/, "");
     const fullPath = path.join(directoryName, fileName);
@@ -23,10 +22,9 @@ export default function getSortedPostsData() {
       _id,
       date: matterResult.data.date,
       title: matterResult.data.title,
-      body: matterResult.content,
+      /*       body: matterResult.content, */
     };
     return blogPost;
   });
-
   return blogPostsData.sort((a, b) => (a.date > b.date ? 1 : -1));
 }
