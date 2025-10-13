@@ -30,7 +30,6 @@ export default function EmployeeForm() {
       setLastname("");
     }
   }
-  /////////////////////////////
   async function handleDelete(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const response = await deleteEmployee(Number(id));
@@ -97,14 +96,3 @@ export default function EmployeeForm() {
     </div>
   );
 }
-/* 
-    const res = await fetch("http://localhost:3000/api/employees", {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ id }),
-    });
-
-    const mongoRes = await res.json();
-    const { mongoDBResponse } = mongoRes; */
