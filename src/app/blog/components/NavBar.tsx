@@ -3,7 +3,7 @@ import { FaFacebook, FaMailBulk, FaLinkedin, FaGithub } from "react-icons/fa";
 
 export default function NavBar() {
   return (
-    <nav className="flex justify-evenly bg-slate-600 text-white/80 py-1.5 text-shadow-black">
+    <nav className="flex justify-evenly bg-slate-700 text-white/80 py-1.5 text-shadow-black">
       <div className="group">
         <h1 className="flex text-3xl hover:text-white">
           <Link href={"http://project02-gold.vercel.app"} target="_blank">

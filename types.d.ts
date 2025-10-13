@@ -21,3 +21,10 @@ type Post = {
   __v?: number;
   userId?: number;
 };
+type Feedback = {
+  [index: string]: string;
+  name?: string;
+  email?: string;
+  phone?: string;
+  textContent?: string;
+};

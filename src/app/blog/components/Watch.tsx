@@ -18,8 +18,8 @@ export default function Watch() {
   const content = (
     <div
       suppressHydrationWarning
-      className=" w-fit px-5 py-2 mt-3 ml-3 text-white text-xl
-      rounded-3xl bg-gradient-to-l from-slate-700 to-slate-800"
+      className=" w-fit px-5 py-2 mt-3 ml-3 text-white text-xl 
+      rounded-3xl bg-gradient-to-l from-slate-800 to-slate-900"
     >
       {format(time, "yyyy-MM-dd hh:mm:ss")}
     </div>

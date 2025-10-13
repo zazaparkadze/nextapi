@@ -17,6 +17,12 @@ export default function Home() {
         <p>
           <Link href={"/mongoposts"}>Posts</Link>
         </p>
+        <div>
+          <Link href={"/visitorfeedback"}>Feedback</Link>
+        </div>
+        <div>
+          <Link href={"/reedfeedbacks"}>Reed Feedbacks</Link>
+        </div>
       </main>
     </div>
   );
