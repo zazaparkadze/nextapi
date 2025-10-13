@@ -1,9 +1,12 @@
 import getAllFeedbacks from "@/lib/getAllFeedbacks";
 import HomeButton from "../../../ui/HomeButton";
 
+export const dynamic = "force-dynamic";
+
 export default async function page() {
   const rawData = await getAllFeedbacks();
   const collectedData: Feedback[] = JSON.parse(rawData);
+
   const content = collectedData.map((feedback) => (
     <div key={feedback.textContent} className="pl-60">
       <p>Name: &nbsp;&nbsp;&nbsp;{feedback.name}</p>
