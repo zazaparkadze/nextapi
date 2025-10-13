@@ -4,15 +4,18 @@ import CreateFeedback from "@/lib/createFeedback";
 export function GET() {
   return NextResponse.json({ message: "hi there" });
 }
+
 export async function OPTIONS() {
-  return new Response(null, {
-    status: 204,
-    headers: {
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
-      "Access-Control-Allow-Headers": "Content-Type, Authorization",
-    },
-  });
+  return NextResponse.json(
+    {},
+    {
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+        "Access-Control-Allow-Headers": "Content-Type, Authorization",
+      },
+    }
+  );
 }
 
 export async function POST(request: Request) {
@@ -27,5 +30,11 @@ export async function POST(request: Request) {
       sentData[prop] = sentData[prop].toUpperCase();
     }
   }
-  return NextResponse.json(sentData);
+  return NextResponse.json(sentData, {
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+      "Access-Control-Allow-Headers": "Content-Type, Authorization",
+    },
+  });
 }

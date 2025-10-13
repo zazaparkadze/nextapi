@@ -18,7 +18,7 @@ export default function Feedback() {
       textContent,
     };
 
-    /* const res = await fetch("http://localhost:3000/api/feedback", { */
+    /*     const res = await fetch("http://localhost:3000/api/feedback", { */
     const res = await fetch("https://nextapi-psi.vercel.app/api/feedback", {
       method: "POST",
       headers: {
@@ -32,10 +32,8 @@ export default function Feedback() {
         `/thankyou/name=Server&email=Error&phone=1-800-help&textContent=try+again+later`
       );
     }
-    console.log(res);
     const result = await res.json();
     console.log(result);
-
     const paramsString = new URLSearchParams(result).toString();
 
     router.push(`/thankyou/${paramsString}`);
