@@ -37,14 +37,6 @@ export default function Home() {
                 Weather Api
               </Link>
             </li>
-            <li className="brightness-70 hover:brightness-150">
-              <Link
-                href={"https://site-search-lilac.vercel.app"}
-                target="_blank"
-              >
-                Site-Search
-              </Link>
-            </li>
           </ul>
         </div>
       </div>
